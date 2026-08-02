@@ -3,319 +3,335 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Student Directory - Student Management System</title>
-    <!-- FontAwesome Icons -->
+    <title>Student Directory - DMU IT Students Hub</title>
+    <!-- Google Fonts & FontAwesome -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     
     <style>
+        :root {
+            --primary: #0d3b66;
+            --secondary: #1f5f8b;
+            --accent: #f4d35e;
+            --dark: #05223f;
+            --light: #f4f7f6;
+            --gray: #64748b;
+            --white: #ffffff;
+        }
+
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Poppins', sans-serif;
         }
 
         body {
-            background-color: #f4f7f6;
+            background-color: var(--light);
             color: #333;
             line-height: 1.6;
+            padding-top: 85px; 
         }
 
-        /* Header Navigation */
-        header {
-            background-color: #0d3b66;
-            color: white;
-            padding: 1rem 5%;
+        /* --- Professional Header --- */
+        .main-header {
+            position: fixed;
+            top: 0; left: 0; width: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 15px 5%;
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            gap: 20px;
         }
 
-        header .logo {
-            font-size: 1.4rem;
-            font-weight: bold;
+        .brand-section { display: flex; align-items: center; gap: 15px; }
+        .logo-wrapper {
+            display: flex; align-items: center; justify-content: center;
+            background: var(--white); padding: 5px; border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
         }
-
-        header nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
-            font-weight: 500;
-            transition: color 0.3s;
+        .dmu-logo { height: 45px; width: auto; object-fit: contain; }
+        .brand-info { display: flex; flex-direction: column; line-height: 1.2; }
+        .system-title {
+            font-size: 1.3rem; font-weight: 700; color: var(--dark);
+            display: flex; align-items: center; gap: 10px;
         }
+        .system-title i { color: var(--primary); font-size: 1.2rem; }
+        .univ-subtitle { font-size: 0.8rem; color: var(--gray); font-weight: 500; margin-top: 2px; }
 
-        header nav a:hover {
-            color: #f4d35e;
+        .main-nav { display: flex; align-items: center; gap: 25px; }
+        .main-nav a {
+            text-decoration: none; color: var(--dark);
+            font-weight: 600; font-size: 0.95rem;
+            position: relative; transition: color 0.3s ease;
+            display: flex; align-items: center; gap: 6px;
         }
+        .main-nav a:hover, .main-nav a.active { color: var(--primary); }
+        .main-nav a::after {
+            content: ''; position: absolute; bottom: -5px; left: 0;
+            width: 0; height: 2px; background: var(--primary); transition: width 0.3s ease;
+        }
+        .main-nav a:hover::after, .main-nav a.active::after { width: 100%; }
 
-        /* Container */
+        /* --- Scrolling Image Banner --- */
+        .banner-container {
+            width: 100%; overflow: hidden; background: var(--dark);
+            padding: 15px 0; margin-bottom: 40px;
+        }
+        .banner-track {
+            display: flex; gap: 20px; width: max-content;
+            animation: scroll 30s linear infinite;
+        }
+        .banner-track:hover { animation-play-state: paused; }
+        .banner-item {
+            height: 180px; width: 280px; border-radius: 10px;
+            object-fit: cover; filter: brightness(0.8); transition: filter 0.3s;
+        }
+        .banner-item:hover { filter: brightness(1); }
+        @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* --- Container & Page Title --- */
         .container {
             max-width: 1200px;
             margin: 40px auto;
             padding: 0 20px;
         }
 
-        .page-title {
-            text-align: center;
-            font-size: 2.2rem;
-            color: #0d3b66;
-            margin-bottom: 5px;
-        }
+        .page-title { text-align: center; font-size: 2.2rem; color: var(--primary); margin-bottom: 5px; }
+        .page-subtitle { text-align: center; font-size: 1.05rem; color: #666; margin-bottom: 30px; }
+        .title-underline { width: 80px; height: 4px; background-color: var(--accent); margin: 8px auto 0; border-radius: 2px; }
 
-        .page-subtitle {
-            text-align: center;
-            font-size: 1.05rem;
-            color: #666;
-            margin-bottom: 30px;
-        }
-
-        .title-underline {
-            width: 80px;
-            height: 4px;
-            background-color: #f4d35e;
-            margin: 8px auto 0;
-            border-radius: 2px;
-        }
-
-        /* Search & Filter Section */
-        .search-box {
-            max-width: 500px;
-            margin: 0 auto 40px;
-            position: relative;
-        }
-
+        /* --- Search & Filter Section --- */
+        .search-box { max-width: 500px; margin: 30px auto 40px; position: relative; }
         .search-box input {
-            width: 100%;
-            padding: 14px 20px 14px 45px;
-            border: 2px solid #ddd;
-            border-radius: 30px;
-            font-size: 1rem;
-            outline: none;
-            transition: border-color 0.3s, box-shadow 0.3s;
+            width: 100%; padding: 14px 20px 14px 45px;
+            border: 2px solid #ddd; border-radius: 30px;
+            font-size: 1rem; outline: none; transition: border-color 0.3s, box-shadow 0.3s;
         }
+        .search-box input:focus { border-color: var(--primary); box-shadow: 0 4px 12px rgba(13, 59, 102, 0.15); }
+        .search-box i { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: #888; font-size: 1.1rem; }
 
-        .search-box input:focus {
-            border-color: #0d3b66;
-            box-shadow: 0 4px 12px rgba(13, 59, 102, 0.15);
-        }
-
-        .search-box i {
-            position: absolute;
-            left: 18px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: #888;
-            font-size: 1.1rem;
-        }
-
-        /* Student Grid Layout */
+        /* --- Student Grid Layout --- */
         .student-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 25px;
         }
 
-        /* Student Card */
         .student-card {
-            background: white;
-            border-radius: 12px;
-            overflow: hidden;
+            background: white; border-radius: 12px; overflow: hidden;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
             transition: transform 0.3s, box-shadow 0.3s;
-            text-align: center;
-            border: 1px solid #eee;
+            text-align: center; border: 1px solid #eee;
+        }
+        .student-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12); }
+        .card-header { background: linear-gradient(135deg, var(--primary), var(--secondary)); height: 80px; position: relative; }
+
+        .student-img {
+            width: 100px; height: 100px; aspect-ratio: 1 / 1; border-radius: 50%;
+            object-fit: cover; border: 4px solid #ffffff;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+            position: relative; margin-top: -50px; background-color: #ffffff;
         }
 
-        .student-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
-        }
-
-        .card-header {
-            background: linear-gradient(135deg, #0d3b66, #1f5f8b);
-            height: 80px;
-            position: relative;
-        }
-
-      .student-img {
-    width: 100px;                  /* የፎቶው ስፋት */
-    height: 100px;                 /* የፎቶው ቁመት */
-    aspect-ratio: 1 / 1;           /* ፎቶው ፍጹም እኩል (Square) እንዲሆን ያደርጋል */
-    border-radius: 50%;            /* ፎቶውን ሙሉ በሙሉ ጥብብ ያለ ክብ ያደርገዋል */
-    object-fit: cover;             /* ፎቶው ሳይለጠጥ/ሳይበላሽ በክቡ ውስጥ እንዲገባ ያደርጋል */
-    border: 4px solid #ffffff;     /* በፎቶው ዙሪያ ነጭ ፍሬም ያደርግበታል */
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* ከፎቶው ጀርባ ትንሽ ጥላ ይጨምራል */
-    position: relative;
-    margin-top: -50px;             /* ከካርዱ ከላይ በኩል ወደ ላይ ከፍ እንዲል */
-    background-color: #ffffff;
-}
-
-        .student-body {
-            padding: 15px 20px 25px;
-        }
-
-        .student-name {
-            font-size: 1.2rem;
-            color: #0d3b66;
-            margin-bottom: 2px;
-        }
-
+        .student-body { padding: 15px 20px 25px; }
+        .student-name { font-size: 1.2rem; color: var(--primary); margin-bottom: 2px; }
         .student-id {
-            display: inline-block;
-            background-color: #eef4f8;
-            color: #0d3b66;
-            font-size: 0.85rem;
-            font-weight: 600;
-            padding: 3px 12px;
-            border-radius: 15px;
-            margin-bottom: 15px;
+            display: inline-block; background-color: #eef4f8; color: var(--primary);
+            font-size: 0.85rem; font-weight: 600; padding: 3px 12px;
+            border-radius: 15px; margin-bottom: 15px;
         }
-
-        .student-info-list {
-            text-align: left;
-            border-top: 1px solid #eee;
-            padding-top: 15px;
-        }
-
+        .student-info-list { text-align: left; border-top: 1px solid #eee; padding-top: 15px; }
         .info-row {
-            display: flex;
-            align-items: center;
-            font-size: 0.9rem;
-            color: #555;
-            margin-bottom: 10px;
-            word-break: break-all;
+            display: flex; align-items: center; font-size: 0.9rem; color: #555;
+            margin-bottom: 10px; word-break: break-all;
         }
+        .info-row i { width: 25px; color: var(--primary); font-size: 1rem; flex-shrink: 0; }
 
-        .info-row i {
-            width: 25px;
-            color: #0d3b66;
-            font-size: 1rem;
-            flex-shrink: 0;
+        /* --- Professional Footer --- */
+        footer { background: var(--dark); color: #94a3b8; padding: 60px 8% 20px; margin-top: 60px; }
+        .footer-container {
+            display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px;
+            margin-bottom: 40px; padding-bottom: 30px; border-bottom: 1px solid #1e293b;
         }
-
-        /* Footer */
-        footer {
-            background-color: #0d3b66;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 60px;
+        .footer-col h3 { color: #fff; margin-bottom: 20px; font-size: 1.5rem; display: flex; align-items: center; gap: 10px; }
+        .footer-col h4 { color: #fff; margin-bottom: 20px; font-size: 1.1rem; }
+        .footer-col p { font-size: 14px; line-height: 1.6; margin-bottom: 20px; }
+        .footer-col ul { list-style: none; }
+        .footer-col ul li { margin-bottom: 12px; display: flex; align-items: center; gap: 8px; }
+        .footer-col ul li a { color: #94a3b8; text-decoration: none; transition: 0.3s; font-size: 14px; }
+        .footer-col ul li a:hover { color: var(--accent); }
+        .footer-col ul li i { color: var(--primary); width: 16px; }
+        .footer-socials { display: flex; gap: 12px; }
+        .footer-socials a {
+            width: 36px; height: 36px; background: #1e293b; border-radius: 8px;
+            display: flex; align-items: center; justify-content: center; color: #fff; transition: 0.3s;
         }
+        .footer-socials a:hover { background: var(--primary); transform: translateY(-3px); }
+        .footer-bottom { text-align: center; font-size: 14px; color: #64748b; }
 
-        /* Responsive */
+        /* --- Responsive --- */
+        @media (max-width: 992px) {
+            .footer-container { grid-template-columns: 1fr 1fr; }
+            .main-nav { display: none; } 
+        }
         @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                gap: 10px;
-            }
-            header nav {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 15px;
-            }
-            header nav a {
-                margin-left: 0;
-            }
+            .header-container { padding: 10px 4%; }
+            .dmu-logo { height: 35px; }
+            .system-title { font-size: 1.1rem; }
+            .footer-container { grid-template-columns: 1fr; text-align: center; }
+            .footer-col ul li { justify-content: center; }
+            .footer-socials { justify-content: center; }
         }
     </style>
 </head>
 <body>
 
-    <!-- Header Navigation -->
-    <header>
-        <div class="logo"><i class="fas fa-user-graduates"></i> Student System</div>
-        <nav>
-            <a href="index.html">Home</a>
-            <a href="directory.html" style="color: #f4d35e;">Directory</a>
-            <a href="about.html">About Us</a>
-            <a href="contact.html">Contact</a>
-        </nav>
+    <!-- Professional Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="brand-section">
+                <div class="logo-wrapper">
+                    <img src="image/logo.jpg" alt="DMU Logo" class="dmu-logo">
+                </div>
+                <div class="brand-info">
+                    <h1 class="system-title"><i class="fa-solid fa-laptop-code"></i> DMU IT Students Hub</h1>
+                    <span class="univ-subtitle">Debre Markos University • Dept. of IT</span>
+                </div>
+            </div>
+            <nav class="main-nav">
+                <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+                <a href="directory.html" class="active"><i class="fa-solid fa-users"></i> Directory</a>
+                <a href="about.html"><i class="fa-solid fa-circle-info"></i> About</a>
+                <a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a>
+            </nav>
+        </div>
     </header>
 
+    <!-- Scrolling Image Banner -->
+    <div class="banner-container">
+        <div class="banner-track">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" class="banner-item" alt="Tech Event">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80" class="banner-item" alt="Coding">
+            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80" class="banner-item" alt="Team">
+            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" class="banner-item" alt="Laptop">
+            <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=800&q=80" class="banner-item" alt="Hacking">
+            <!-- Duplicate for infinite loop effect -->
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" class="banner-item" alt="Tech Event">
+            <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80" class="banner-item" alt="Coding">
+            <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80" class="banner-item" alt="Team">
+            <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" class="banner-item" alt="Laptop">
+            <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=800&q=80" class="banner-item" alt="Hacking">
+        </div>
+    </div>
+
+    <!-- Main Content -->
     <div class="container">
         <h1 class="page-title">የተማሪዎች ዝርዝር <span style="font-size: 1.4rem; color:#666;">/ Student Directory</span></h1>
-        <div class="page-subtitle">የደብረ ማርቆስ ዩኒቨርሲቲ ተማሪዎች መረጃ ዝርዝር</div>
+        <div class="page-subtitle">የደብረ ማርቆስ ዩኒቨርሲቲ የአይቲ (IT) ተማሪዎች መረጃ ዝርዝር</div>
         <div class="title-underline"></div>
 
         <!-- Real-Time Search Bar -->
-        <div class="search-box" style="margin-top: 30px;">
+        <div class="search-box">
             <i class="fas fa-search"></i>
             <input type="text" id="searchInput" onkeyup="filterStudents()" placeholder="ተማሪ በስም ወይም በ ID ይፈልጉ / Search by name or ID...">
         </div>
 
-        <!-- Student Cards Grid -->
-        <div class="student-grid" id="studentGrid">
-            
-            <!-- Student 1: Yekoye Ayzobel -->
-            <div class="student-card">
-                <div class="card-header"></div>
-                <img src="image/yekoye.jpg" alt="Yekoye" class="student-img">
-                <div class="student-body">
-                    <h3 class="student-name">Yekoye Ayzobel</h3>
-                    <span class="student-id">ID: 1638/16</span>
-                    
-                    <div class="student-info-list">
-                        <div class="info-row">
-                            <i class="fas fa-laptop-code"></i>
-                            <span><strong>Dept:</strong> Information Tech (IT)</span>
-                        </div>
-                        <div class="info-row">
-                            <i class="fas fa-envelope"></i>
-                            <span>yekoeyayzobel2@gmail.com</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Student 2: Tizazu Akemach -->
-            <div class="student-card">
-                <div class="card-header"></div>
-                <img src="https://ui-avatars.com/api/?name=Tizazu+Akemach&background=0d3b66&color=fff&size=150" alt="Tizazu Akemach" class="student-img">
-                <div class="student-body">
-                    <h3 class="student-name">Tizazu Akemach</h3>
-                    <span class="student-id">ID: 2121/16</span>
-                    
-                    <div class="student-info-list">
-                        <div class="info-row">
-                            <i class="fas fa-microchip"></i>
-                            <span><strong>Dept:</strong> Computer Science</span>
-                        </div>
-                        <div class="info-row">
-                            <i class="fas fa-envelope"></i>
-                            <span>tizazuakemach@gmail.com</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Student 3: Kassahun Gebeyehu -->
-            <div class="student-card">
-                <div class="card-header"></div>
-                <img src="https://ui-avatars.com/api/?name=Kassahun+Gebeyehu&background=0d3b66&color=fff&size=150" alt="Kassahun Gebeyehu" class="student-img">
-                <div class="student-body">
-                    <h3 class="student-name">Kassahun Gebeyehu</h3>
-                    <span class="student-id">ID: 18000</span>
-                    
-                    <div class="student-info-list">
-                        <div class="info-row">
-                            <i class="fas fa-drafting-compass"></i>
-                            <span><strong>Dept:</strong> Software Engineering</span>
-                        </div>
-                        <div class="info-row">
-                            <i class="fas fa-envelope"></i>
-                            <span>kassahungebeyehu@gmail.com</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-        </div>
+        <!-- Student Cards Grid (Populated by JS) -->
+        <div class="student-grid" id="studentGrid"></div>
     </div>
 
-    <!-- Live Search Filter JavaScript -->
+    <!-- Student Data & Render JavaScript -->
     <script>
+        // 1. Array of Students (3 Originals + 30 New IT Students)
+        const students = [
+            // Original 3 Students
+            { name: "Yekoye Ayzobel", id: "1638/16", img: "image/yekoye.jpg", email: "yekoeyayzobel2@gmail.com", icon: "fa-laptop-code" },
+            { name: "Tizazu Akemach", id: "2121/16", email: "tizazuakemach@gmail.com", icon: "fa-network-wired" },
+            { name: "Kassahun Gebeyehu", id: "18000", email: "kassahungebeyehu@gmail.com", icon: "fa-database" },
+
+            // 30 Additional IT Students
+            { name: "Abebe Bekele", id: "DMU/1001/16", email: "abebe.bekele@dmu.edu.et", icon: "fa-laptop-code" },
+            { name: "Tigist Haile", id: "DMU/1002/16", email: "tigist.haile@dmu.edu.et", icon: "fa-code" },
+            { name: "Yonas Girma", id: "DMU/1003/16", email: "yonas.girma@dmu.edu.et", icon: "fa-microchip" },
+            { name: "Marta Assefa", id: "DMU/1004/16", email: "marta.assefa@dmu.edu.et", icon: "fa-network-wired" },
+            { name: "Dawit Tsegaye", id: "DMU/1005/16", email: "dawit.tsegaye@dmu.edu.et", icon: "fa-database" },
+            { name: "Selam Tariku", id: "DMU/1006/16", email: "selam.tariku@dmu.edu.et", icon: "fa-laptop-code" },
+            { name: "Bereket Simeneh", id: "DMU/1007/16", email: "bereket.simeneh@dmu.edu.et", icon: "fa-code" },
+            { name: "Hanna Tesfaye", id: "DMU/1008/16", email: "hanna.tesfaye@dmu.edu.et", icon: "fa-microchip" },
+            { name: "Robel Solomon", id: "DMU/1009/16", email: "robel.solomon@dmu.edu.et", icon: "fa-network-wired" },
+            { name: "Liya Tariku", id: "DMU/1010/16", email: "liya.tariku@dmu.edu.et", icon: "fa-database" },
+            { name: "Samuel Getachew", id: "DMU/1011/16", email: "samuel.getachew@dmu.edu.et", icon: "fa-laptop-code" },
+            { name: "Eden Mengistu", id: "DMU/1012/16", email: "eden.mengistu@dmu.edu.et", icon: "fa-code" },
+            { name: "Nathan Paulos", id: "DMU/1013/16", email: "nathan.paulos@dmu.edu.et", icon: "fa-microchip" },
+            { name: "Ruth Ayalew", id: "DMU/1014/16", email: "ruth.ayalew@dmu.edu.et", icon: "fa-network-wired" },
+            { name: "Biruk Eshetu", id: "DMU/1015/16", email: "biruk.eshetu@dmu.edu.et", icon: "fa-database" },
+            { name: "Mahlet Tesfa", id: "DMU/1016/16", email: "mahlet.tesfa@dmu.edu.et", icon: "fa-laptop-code" },
+            { name: "Eyob Abebe", id: "DMU/1017/16", email: "eyob.abebe@dmu.edu.et", icon: "fa-code" },
+            { name: "Nebiyu Mohammed", id: "DMU/1018/16", email: "nebiyu.mohammed@dmu.edu.et", icon: "fa-microchip" },
+            { name: "Ftsum Girmay", id: "DMU/1019/16", email: "ftsum.girmay@dmu.edu.et", icon: "fa-network-wired" },
+            { name: "Henok Wolde", id: "DMU/1020/16", email: "henok.wolde@dmu.edu.et", icon: "fa-database" },
+            { name: "Salem Nuru", id: "DMU/1021/16", email: "salem.nuru@dmu.edu.et", icon: "fa-laptop-code" },
+            { name: "Abel Taye", id: "DMU/1022/16", email: "abel.taye@dmu.edu.et", icon: "fa-code" },
+            { name: "Meron Desalegn", id: "DMU/1023/16", email: "meron.desalegn@dmu.edu.et", icon: "fa-microchip" },
+            { name: "Kaleb Yohannes", id: "DMU/1024/16", email: "kaleb.yohannes@dmu.edu.et", icon: "fa-network-wired" },
+            { name: "Bethlehem Tilahun", id: "DMU/1025/16", email: "bethlehem.tilahun@dmu.edu.et", icon: "fa-database" },
+            { name: "Nahom Bekele", id: "DMU/1026/16", email: "nahom.bekele@dmu.edu.et", icon: "fa-laptop-code" },
+            { name: "Kidist Alemu", id: "DMU/1027/16", email: "kidist.alemu@dmu.edu.et", icon: "fa-code" },
+            { name: "Yared Negash", id: "DMU/1028/16", email: "yared.negash@dmu.edu.et", icon: "fa-microchip" },
+            { name: "Firehiwot Tesfaye", id: "DMU/1029/16", email: "firehiwot.tesfaye@dmu.edu.et", icon: "fa-network-wired" },
+            { name: "Tsion Kebede", id: "DMU/1030/16", email: "tsion.kebede@dmu.edu.et", icon: "fa-database" }
+        ];
+
+        const studentGrid = document.getElementById('studentGrid');
+
+        // 2. Function to Generate Image URL if not provided
+        function getImgUrl(student) {
+            if (student.img) return student.img;
+            return `https://ui-avatars.com/api/?name=${student.name.replace(/ /g, '+')}&background=0d3b66&color=fff&size=150`;
+        }
+
+        // 3. Function to Render Cards
+        function renderStudents() {
+            let htmlContent = '';
+            students.forEach(student => {
+                const avatarUrl = getImgUrl(student);
+                htmlContent += `
+                    <div class="student-card">
+                        <div class="card-header"></div>
+                        <img src="${avatarUrl}" alt="${student.name}" class="student-img" onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=${student.name.replace(/ /g, '+')}&background=0d3b66&color=fff'">
+                        <div class="student-body">
+                            <h3 class="student-name">${student.name}</h3>
+                            <span class="student-id">ID: ${student.id}</span>
+                            <div class="student-info-list">
+                                <div class="info-row">
+                                    <i class="fas ${student.icon}"></i>
+                                    <span><strong>Dept:</strong> Information Tech (IT)</span>
+                                </div>
+                                <div class="info-row">
+                                    <i class="fas fa-envelope"></i>
+                                    <span>${student.email}</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            });
+            studentGrid.innerHTML = htmlContent;
+        }
+
+        // 4. Live Search Filter Function
         function filterStudents() {
             let input = document.getElementById('searchInput').value.toLowerCase();
             let cards = document.getElementsByClassName('student-card');
@@ -329,11 +345,54 @@
                 }
             }
         }
+
+        // Initialize the grid on page load
+        renderStudents();
     </script>
 
-    <!-- Footer -->
+    <!-- Professional Footer -->
     <footer>
-        <p>&copy; <?php echo date('Y'); ?> Student Management System | Debre Markos University</p>
+        <div class="footer-container">
+            <div class="footer-col">
+                <h3><i class="fa-solid fa-laptop-code"></i> DMU IT Hub</h3>
+                <p>Debre Markos University IT Students Platform. A dedicated space to showcase talents, connect with peers, and explore professional opportunities.</p>
+                <div class="footer-socials">
+                    <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#"><i class="fa-brands fa-telegram"></i></a>
+                    <a href="#" style="background: #ff0000;"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" style="background: #000000;"><i class="fa-brands fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><i class="fa-solid fa-chevron-right"></i> <a href="index.html">Home</a></li>
+                    <li><i class="fa-solid fa-chevron-right"></i> <a href="directory.html">Directory</a></li>
+                    <li><i class="fa-solid fa-chevron-right"></i> <a href="about.html">About Us</a></li>
+                    <li><i class="fa-solid fa-chevron-right"></i> <a href="contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Resources</h4>
+                <ul>
+                    <li><i class="fa-solid fa-chevron-right"></i> <a href="#">IT Department</a></li>
+                    <li><i class="fa-solid fa-chevron-right"></i> <a href="#">University Portal</a></li>
+                    <li><i class="fa-solid fa-chevron-right"></i> <a href="#">Tech Blog</a></li>
+                    <li><i class="fa-solid fa-chevron-right"></i> <a href="#">Support</a></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Contact Info</h4>
+                <ul>
+                    <li><i class="fa-solid fa-location-dot"></i> Debre Markos University, Ethiopia</li>
+                    <li><i class="fa-solid fa-envelope"></i> it.hub@dmu.edu.et</li>
+                    <li><i class="fa-solid fa-phone"></i> +251 587 000000</li>
+                </ul>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; <?php echo date('Y'); ?> DMU IT Students Hub. Designed for Final Project. All Rights Reserved.</p>
+        </div>
     </footer>
 
 </body>
