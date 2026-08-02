@@ -138,17 +138,18 @@
             position: relative;
         }
 
-        .student-img {
-            width: 90px;
-            height: 90px;
-            border-radius: 50%;
-            border: 4px solid white;
-            object-fit: cover;
-            position: relative;
-            margin-top: -45px;
-            background-color: #fff;
-            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        }
+      .student-img {
+    width: 100px;                  /* የፎቶው ስፋት */
+    height: 100px;                 /* የፎቶው ቁመት */
+    aspect-ratio: 1 / 1;           /* ፎቶው ፍጹም እኩል (Square) እንዲሆን ያደርጋል */
+    border-radius: 50%;            /* ፎቶውን ሙሉ በሙሉ ጥብብ ያለ ክብ ያደርገዋል */
+    object-fit: cover;             /* ፎቶው ሳይለጠጥ/ሳይበላሽ በክቡ ውስጥ እንዲገባ ያደርጋል */
+    border: 4px solid #ffffff;     /* በፎቶው ዙሪያ ነጭ ፍሬም ያደርግበታል */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* ከፎቶው ጀርባ ትንሽ ጥላ ይጨምራል */
+    position: relative;
+    margin-top: -50px;             /* ከካርዱ ከላይ በኩል ወደ ላይ ከፍ እንዲል */
+    background-color: #ffffff;
+}
 
         .student-body {
             padding: 15px 20px 25px;
