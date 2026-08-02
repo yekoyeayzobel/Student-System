@@ -14,9 +14,26 @@
             --secondary: #1f5f8b;
             --accent: #f4d35e;
             --dark: #05223f;
-            --light: #f4f7f6;
-            --gray: #64748b;
-            --white: #ffffff;
+            
+            /* Light Mode Defaults */
+            --bg-color: #f4f7f6;
+            --text-color: #333;
+            --card-bg: #ffffff;
+            --header-bg: rgba(255, 255, 255, 0.9);
+            --border-color: #eee;
+            --input-bg: #ffffff;
+            --shadow-color: rgba(0, 0, 0, 0.08);
+        }
+
+        body.dark-mode {
+            --bg-color: #0f172a;
+            --text-color: #e2e8f0;
+            --card-bg: #1e293b;
+            --header-bg: rgba(15, 23, 42, 0.9);
+            --border-color: #334155;
+            --input-bg: #0f172a;
+            --shadow-color: rgba(0, 0, 0, 0.4);
+            --dark: #f4f7f6;
         }
 
         * {
@@ -27,22 +44,24 @@
         }
 
         body {
-            background-color: var(--light);
-            color: #333;
+            background-color: var(--bg-color);
+            color: var(--text-color);
             line-height: 1.6;
             padding-top: 85px; 
+            transition: background-color 0.3s ease, color 0.3s ease;
         }
 
         /* --- Professional Header --- */
         .main-header {
             position: fixed;
             top: 0; left: 0; width: 100%;
-            background: rgba(255, 255, 255, 0.9);
+            background: var(--header-bg);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+            box-shadow: 0 4px 20px var(--shadow-color);
             z-index: 1000;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+            border-bottom: 1px solid var(--border-color);
+            transition: background 0.3s ease;
         }
 
         .header-container {
@@ -58,8 +77,8 @@
         .brand-section { display: flex; align-items: center; gap: 15px; }
         .logo-wrapper {
             display: flex; align-items: center; justify-content: center;
-            background: var(--white); padding: 5px; border-radius: 12px;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            background: var(--card-bg); padding: 5px; border-radius: 12px;
+            box-shadow: 0 4px 10px var(--shadow-color);
         }
         .dmu-logo { height: 45px; width: auto; object-fit: contain; }
         .brand-info { display: flex; flex-direction: column; line-height: 1.2; }
@@ -67,22 +86,35 @@
             font-size: 1.3rem; font-weight: 700; color: var(--dark);
             display: flex; align-items: center; gap: 10px;
         }
+        .dark-mode .system-title { color: #fff; }
+        .dark-mode .univ-subtitle { color: #94a3b8; }
         .system-title i { color: var(--primary); font-size: 1.2rem; }
         .univ-subtitle { font-size: 0.8rem; color: var(--gray); font-weight: 500; margin-top: 2px; }
 
         .main-nav { display: flex; align-items: center; gap: 25px; }
         .main-nav a {
-            text-decoration: none; color: var(--dark);
+            text-decoration: none; color: var(--text-color);
             font-weight: 600; font-size: 0.95rem;
             position: relative; transition: color 0.3s ease;
             display: flex; align-items: center; gap: 6px;
         }
         .main-nav a:hover, .main-nav a.active { color: var(--primary); }
+        .dark-mode .main-nav a:hover, .dark-mode .main-nav a.active { color: var(--accent); }
         .main-nav a::after {
             content: ''; position: absolute; bottom: -5px; left: 0;
             width: 0; height: 2px; background: var(--primary); transition: width 0.3s ease;
         }
         .main-nav a:hover::after, .main-nav a.active::after { width: 100%; }
+
+        .nav-actions { display: flex; align-items: center; gap: 15px; }
+        .theme-toggle {
+            background: var(--card-bg); border: 1px solid var(--border-color);
+            width: 40px; height: 40px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; color: var(--text-color); font-size: 1.1rem;
+            transition: all 0.3s ease;
+        }
+        .theme-toggle:hover { color: var(--accent); border-color: var(--accent); }
 
         /* --- Scrolling Image Banner --- */
         .banner-container {
@@ -102,69 +134,131 @@
         @keyframes scroll { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
 
         /* --- Container & Page Title --- */
-        .container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
         .page-title { text-align: center; font-size: 2.2rem; color: var(--primary); margin-bottom: 5px; }
-        .page-subtitle { text-align: center; font-size: 1.05rem; color: #666; margin-bottom: 30px; }
+        .dark-mode .page-title { color: var(--accent); }
+        .page-subtitle { text-align: center; font-size: 1.05rem; color: var(--text-color); margin-bottom: 30px; opacity: 0.8; }
         .title-underline { width: 80px; height: 4px; background-color: var(--accent); margin: 8px auto 0; border-radius: 2px; }
 
-        /* --- Search & Filter Section --- */
+        /* --- Search --- */
         .search-box { max-width: 500px; margin: 30px auto 40px; position: relative; }
         .search-box input {
             width: 100%; padding: 14px 20px 14px 45px;
-            border: 2px solid #ddd; border-radius: 30px;
-            font-size: 1rem; outline: none; transition: border-color 0.3s, box-shadow 0.3s;
+            border: 2px solid var(--border-color); border-radius: 30px;
+            font-size: 1rem; outline: none; background: var(--input-bg); color: var(--text-color);
+            transition: border-color 0.3s, box-shadow 0.3s;
         }
         .search-box input:focus { border-color: var(--primary); box-shadow: 0 4px 12px rgba(13, 59, 102, 0.15); }
         .search-box i { position: absolute; left: 18px; top: 50%; transform: translateY(-50%); color: #888; font-size: 1.1rem; }
 
-        /* --- Student Grid Layout --- */
-        .student-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 25px;
-        }
-
+        /* --- Student Grid & Micro-Animations --- */
+        .student-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 25px; }
+        
         .student-card {
-            background: white; border-radius: 12px; overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.06);
-            transition: transform 0.3s, box-shadow 0.3s;
-            text-align: center; border: 1px solid #eee;
+            background: var(--card-bg); border-radius: 12px; overflow: hidden;
+            box-shadow: 0 4px 15px var(--shadow-color);
+            text-align: center; border: 1px solid var(--border-color);
+            cursor: pointer;
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease;
         }
-        .student-card:hover { transform: translateY(-5px); box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12); }
+        .student-card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 15px 30px rgba(13, 59, 102, 0.2);
+        }
+        
         .card-header { background: linear-gradient(135deg, var(--primary), var(--secondary)); height: 80px; position: relative; }
-
         .student-img {
             width: 100px; height: 100px; aspect-ratio: 1 / 1; border-radius: 50%;
-            object-fit: cover; border: 4px solid #ffffff;
+            object-fit: cover; border: 4px solid var(--card-bg);
             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
-            position: relative; margin-top: -50px; background-color: #ffffff;
+            position: relative; margin-top: -50px; background-color: var(--card-bg);
         }
-
         .student-body { padding: 15px 20px 25px; }
         .student-name { font-size: 1.2rem; color: var(--primary); margin-bottom: 2px; }
+        .dark-mode .student-name { color: #fff; }
         .student-id {
-            display: inline-block; background-color: #eef4f8; color: var(--primary);
+            display: inline-block; background-color: var(--bg-color); color: var(--primary);
             font-size: 0.85rem; font-weight: 600; padding: 3px 12px;
-            border-radius: 15px; margin-bottom: 15px;
+            border-radius: 15px; margin-bottom: 15px; border: 1px solid var(--border-color);
         }
-        .student-info-list { text-align: left; border-top: 1px solid #eee; padding-top: 15px; }
-        .info-row {
-            display: flex; align-items: center; font-size: 0.9rem; color: #555;
-            margin-bottom: 10px; word-break: break-all;
-        }
+        .student-info-list { text-align: left; border-top: 1px solid var(--border-color); padding-top: 15px; }
+        .info-row { display: flex; align-items: center; font-size: 0.9rem; color: var(--text-color); margin-bottom: 10px; word-break: break-all; }
         .info-row i { width: 25px; color: var(--primary); font-size: 1rem; flex-shrink: 0; }
+        .dark-mode .info-row i { color: var(--accent); }
 
-        /* --- Professional Footer --- */
-        footer { background: var(--dark); color: #94a3b8; padding: 60px 8% 20px; margin-top: 60px; }
-        .footer-container {
-            display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px;
-            margin-bottom: 40px; padding-bottom: 30px; border-bottom: 1px solid #1e293b;
+        /* --- Profile Modal --- */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.7); backdrop-filter: blur(5px);
+            display: none; justify-content: center; align-items: center; z-index: 2000; padding: 20px;
         }
+        .modal-overlay.active { display: flex; }
+        .modal-content {
+            background: var(--card-bg); width: 100%; max-width: 900px;
+            max-height: 90vh; overflow-y: auto; border-radius: 20px;
+            animation: slideUp 0.4s ease;
+        }
+        @keyframes slideUp { from { transform: translateY(50px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        
+        .modal-header {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            height: 150px; position: relative; border-radius: 20px 20px 0 0;
+        }
+        .close-modal {
+            position: absolute; top: 20px; right: 20px; background: rgba(255,255,255,0.2);
+            color: white; width: 35px; height: 35px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            cursor: pointer; font-size: 1.2rem; transition: 0.3s;
+        }
+        .close-modal:hover { background: #ef4444; transform: rotate(90deg); }
+        
+        .modal-body { padding: 0 40px 40px; display: grid; grid-template-columns: 1fr 2fr; gap: 40px; }
+        
+        .modal-left { margin-top: -60px; text-align: center; }
+        .modal-img {
+            width: 120px; height: 120px; border-radius: 50%; object-fit: cover;
+            border: 5px solid var(--card-bg); box-shadow: 0 5px 15px rgba(0,0,0,0.1); margin-bottom: 15px;
+        }
+        .modal-name { font-size: 1.5rem; color: var(--text-color); margin-bottom: 5px; }
+        .modal-id { display: inline-block; background: var(--bg-color); color: var(--primary); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; margin-bottom: 20px; }
+        
+        .social-row { display: flex; justify-content: center; gap: 15px; margin-bottom: 25px; }
+        .social-row a {
+            width: 40px; height: 40px; background: var(--bg-color); color: var(--primary);
+            border-radius: 50%; display: flex; align-items: center; justify-content: center;
+            font-size: 1.1rem; text-decoration: none; border: 1px solid var(--border-color);
+            transition: 0.3s;
+        }
+        .social-row a:hover { background: var(--primary); color: white; transform: translateY(-3px); }
+
+        .qr-box { background: var(--bg-color); padding: 15px; border-radius: 12px; display: inline-block; border: 1px solid var(--border-color); }
+        .qr-box img { width: 120px; height: 120px; }
+        .qr-text { font-size: 0.8rem; color: var(--text-color); margin-top: 10px; opacity: 0.7; }
+
+        .hire-btn {
+            display: block; width: 100%; padding: 12px; margin-top: 20px;
+            background: var(--accent); color: var(--dark); text-align: center;
+            text-decoration: none; font-weight: 700; border-radius: 8px; transition: 0.3s;
+        }
+        .hire-btn:hover { transform: translateY(-2px); box-shadow: 0 5px 15px rgba(244, 211, 94, 0.4); }
+
+        .modal-right { padding-top: 30px; }
+        .modal-section-title { font-size: 1.2rem; color: var(--primary); margin-bottom: 15px; border-bottom: 2px solid var(--border-color); padding-bottom: 10px; }
+        .dark-mode .modal-section-title { color: var(--accent); }
+        .modal-bio { font-size: 0.95rem; color: var(--text-color); margin-bottom: 30px; opacity: 0.9; }
+        
+        .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+        .project-card { border: 1px solid var(--border-color); border-radius: 10px; overflow: hidden; transition: 0.3s; }
+        .project-card:hover { transform: scale(1.03); box-shadow: 0 5px 15px var(--shadow-color); }
+        .project-card img { width: 100%; height: 100px; object-fit: cover; }
+        .project-info { padding: 10px; }
+        .project-info h4 { font-size: 0.9rem; color: var(--text-color); margin-bottom: 5px; }
+        .project-info a { font-size: 0.8rem; color: var(--primary); text-decoration: none; }
+        .dark-mode .project-info a { color: var(--accent); }
+
+        /* --- Footer --- */
+        footer { background: #05223f; color: #94a3b8; padding: 60px 8% 20px; margin-top: 60px; }
+        .footer-container { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; margin-bottom: 40px; padding-bottom: 30px; border-bottom: 1px solid #1e293b; }
         .footer-col h3 { color: #fff; margin-bottom: 20px; font-size: 1.5rem; display: flex; align-items: center; gap: 10px; }
         .footer-col h4 { color: #fff; margin-bottom: 20px; font-size: 1.1rem; }
         .footer-col p { font-size: 14px; line-height: 1.6; margin-bottom: 20px; }
@@ -174,10 +268,7 @@
         .footer-col ul li a:hover { color: var(--accent); }
         .footer-col ul li i { color: var(--primary); width: 16px; }
         .footer-socials { display: flex; gap: 12px; }
-        .footer-socials a {
-            width: 36px; height: 36px; background: #1e293b; border-radius: 8px;
-            display: flex; align-items: center; justify-content: center; color: #fff; transition: 0.3s;
-        }
+        .footer-socials a { width: 36px; height: 36px; background: #1e293b; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff; transition: 0.3s; }
         .footer-socials a:hover { background: var(--primary); transform: translateY(-3px); }
         .footer-bottom { text-align: center; font-size: 14px; color: #64748b; }
 
@@ -185,6 +276,8 @@
         @media (max-width: 992px) {
             .footer-container { grid-template-columns: 1fr 1fr; }
             .main-nav { display: none; } 
+            .modal-body { grid-template-columns: 1fr; }
+            .modal-left { margin-top: -40px; }
         }
         @media (max-width: 768px) {
             .header-container { padding: 10px 4%; }
@@ -193,6 +286,7 @@
             .footer-container { grid-template-columns: 1fr; text-align: center; }
             .footer-col ul li { justify-content: center; }
             .footer-socials { justify-content: center; }
+            .projects-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -216,6 +310,11 @@
                 <a href="about.html"><i class="fa-solid fa-circle-info"></i> About</a>
                 <a href="contact.html"><i class="fa-solid fa-envelope"></i> Contact</a>
             </nav>
+            <div class="nav-actions">
+                <button class="theme-toggle" id="themeToggle" title="Toggle Dark/Light Mode">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -227,7 +326,6 @@
             <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80" class="banner-item" alt="Team">
             <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" class="banner-item" alt="Laptop">
             <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=800&q=80" class="banner-item" alt="Hacking">
-            <!-- Duplicate for infinite loop effect -->
             <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=800&q=80" class="banner-item" alt="Tech Event">
             <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&w=800&q=80" class="banner-item" alt="Coding">
             <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&w=800&q=80" class="banner-item" alt="Team">
@@ -238,77 +336,73 @@
 
     <!-- Main Content -->
     <div class="container">
-        <h1 class="page-title">የተማሪዎች ዝርዝር <span style="font-size: 1.4rem; color:#666;">/ Student Directory</span></h1>
+        <h1 class="page-title">የተማሪዎች ዝርዝር <span style="font-size: 1.4rem; opacity:0.7;">/ Student Directory</span></h1>
         <div class="page-subtitle">የደብረ ማርቆስ ዩኒቨርሲቲ የአይቲ (IT) ተማሪዎች መረጃ ዝርዝር</div>
         <div class="title-underline"></div>
 
-        <!-- Real-Time Search Bar -->
         <div class="search-box">
             <i class="fas fa-search"></i>
             <input type="text" id="searchInput" onkeyup="filterStudents()" placeholder="ተማሪ በስም ወይም በ ID ይፈልጉ / Search by name or ID...">
         </div>
 
-        <!-- Student Cards Grid (Populated by JS) -->
         <div class="student-grid" id="studentGrid"></div>
+    </div>
+
+    <!-- Profile Modal Structure -->
+    <div class="modal-overlay" id="profileModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="close-modal" onclick="closeModal()"><i class="fas fa-times"></i></div>
+            </div>
+            <div class="modal-body" id="modalBody">
+                <!-- Populated by JS -->
+            </div>
+        </div>
     </div>
 
     <!-- Student Data & Render JavaScript -->
     <script>
-        // 1. Array of Students (3 Originals + 30 New IT Students)
+        // 1. Array of Students
         const students = [
-            // Original 3 Students
-            { name: "Yekoye Ayzobel", id: "1638/16", img: "image/yekoye.jpg", email: "yekoeyayzobel2@gmail.com", icon: "fa-laptop-code" },
-            { name: "Tizazu Akemach", id: "2121/16", email: "tizazuakemach@gmail.com", icon: "fa-network-wired" },
-            { name: "Kassahun Gebeyehu", id: "18000", email: "kassahungebeyehu@gmail.com", icon: "fa-database" },
-
-            // 30 Additional IT Students
-            { name: "Abebe Bekele", id: "DMU/1001/16", email: "abebe.bekele@dmu.edu.et", icon: "fa-laptop-code" },
-            { name: "Tigist Haile", id: "DMU/1002/16", email: "tigist.haile@dmu.edu.et", icon: "fa-code" },
-            { name: "Yonas Girma", id: "DMU/1003/16", email: "yonas.girma@dmu.edu.et", icon: "fa-microchip" },
-            { name: "Marta Assefa", id: "DMU/1004/16", email: "marta.assefa@dmu.edu.et", icon: "fa-network-wired" },
-            { name: "Dawit Tsegaye", id: "DMU/1005/16", email: "dawit.tsegaye@dmu.edu.et", icon: "fa-database" },
-            { name: "Selam Tariku", id: "DMU/1006/16", email: "selam.tariku@dmu.edu.et", icon: "fa-laptop-code" },
-            { name: "Bereket Simeneh", id: "DMU/1007/16", email: "bereket.simeneh@dmu.edu.et", icon: "fa-code" },
-            { name: "Hanna Tesfaye", id: "DMU/1008/16", email: "hanna.tesfaye@dmu.edu.et", icon: "fa-microchip" },
-            { name: "Robel Solomon", id: "DMU/1009/16", email: "robel.solomon@dmu.edu.et", icon: "fa-network-wired" },
-            { name: "Liya Tariku", id: "DMU/1010/16", email: "liya.tariku@dmu.edu.et", icon: "fa-database" },
-            { name: "Samuel Getachew", id: "DMU/1011/16", email: "samuel.getachew@dmu.edu.et", icon: "fa-laptop-code" },
-            { name: "Eden Mengistu", id: "DMU/1012/16", email: "eden.mengistu@dmu.edu.et", icon: "fa-code" },
-            { name: "Nathan Paulos", id: "DMU/1013/16", email: "nathan.paulos@dmu.edu.et", icon: "fa-microchip" },
-            { name: "Ruth Ayalew", id: "DMU/1014/16", email: "ruth.ayalew@dmu.edu.et", icon: "fa-network-wired" },
-            { name: "Biruk Eshetu", id: "DMU/1015/16", email: "biruk.eshetu@dmu.edu.et", icon: "fa-database" },
-            { name: "Mahlet Tesfa", id: "DMU/1016/16", email: "mahlet.tesfa@dmu.edu.et", icon: "fa-laptop-code" },
-            { name: "Eyob Abebe", id: "DMU/1017/16", email: "eyob.abebe@dmu.edu.et", icon: "fa-code" },
-            { name: "Nebiyu Mohammed", id: "DMU/1018/16", email: "nebiyu.mohammed@dmu.edu.et", icon: "fa-microchip" },
-            { name: "Ftsum Girmay", id: "DMU/1019/16", email: "ftsum.girmay@dmu.edu.et", icon: "fa-network-wired" },
-            { name: "Henok Wolde", id: "DMU/1020/16", email: "henok.wolde@dmu.edu.et", icon: "fa-database" },
-            { name: "Salem Nuru", id: "DMU/1021/16", email: "salem.nuru@dmu.edu.et", icon: "fa-laptop-code" },
-            { name: "Abel Taye", id: "DMU/1022/16", email: "abel.taye@dmu.edu.et", icon: "fa-code" },
-            { name: "Meron Desalegn", id: "DMU/1023/16", email: "meron.desalegn@dmu.edu.et", icon: "fa-microchip" },
-            { name: "Kaleb Yohannes", id: "DMU/1024/16", email: "kaleb.yohannes@dmu.edu.et", icon: "fa-network-wired" },
-            { name: "Bethlehem Tilahun", id: "DMU/1025/16", email: "bethlehem.tilahun@dmu.edu.et", icon: "fa-database" },
-            { name: "Nahom Bekele", id: "DMU/1026/16", email: "nahom.bekele@dmu.edu.et", icon: "fa-laptop-code" },
-            { name: "Kidist Alemu", id: "DMU/1027/16", email: "kidist.alemu@dmu.edu.et", icon: "fa-code" },
-            { name: "Yared Negash", id: "DMU/1028/16", email: "yared.negash@dmu.edu.et", icon: "fa-microchip" },
-            { name: "Firehiwot Tesfaye", id: "DMU/1029/16", email: "firehiwot.tesfaye@dmu.edu.et", icon: "fa-network-wired" },
-            { name: "Tsion Kebede", id: "DMU/1030/16", email: "tsion.kebede@dmu.edu.et", icon: "fa-database" }
+            { name: "Yekoye Ayzobel", id: "1638/16", img: "image/yekoye.jpg", email: "yekoeyayzobel2@gmail.com", icon: "fa-laptop-code", bio: "የመጀመሪያ ዓመት የአይቲ ተማሪ። ዌብ ልማት እና ዲዛይን ላይ ትኩረት ያደረገች።", github: "#", linkedin: "#", telegram: "#" },
+            { name: "Tizazu Akemach", id: "2121/16", email: "tizazuakemach@gmail.com", icon: "fa-network-wired", bio: "የኔትወርክ እና የሳይበር ደህንነት ሙያተኛ።", github: "#", linkedin: "#", telegram: "#" },
+            { name: "Kassahun Gebeyehu", id: "18000", email: "kassahungebeyehu@gmail.com", icon: "fa-database", bio: "የውሂብ ጎታ ባለሙያ እና የሶፍትዌር ልማተኛ።", github: "#", linkedin: "#", telegram: "#" },
+            { name: "Abebe Bekele", id: "DMU/1001/16", email: "abebe.bekele@dmu.edu.et", icon: "fa-laptop-code", bio: "Full Stack Developer.", github: "#", linkedin: "#", telegram: "#" },
+            { name: "Tigist Haile", id: "DMU/1002/16", email: "tigist.haile@dmu.edu.et", icon: "fa-code", bio: "UI/UX Designer.", github: "#", linkedin: "#", telegram: "#" },
+            { name: "Yonas Girma", id: "DMU/1003/16", email: "yonas.girma@dmu.edu.et", icon: "fa-microchip", bio: "IoT Specialist.", github: "#", linkedin: "#", telegram: "#" },
+            { name: "Marta Assefa", id: "DMU/1004/16", email: "marta.assefa@dmu.edu.et", icon: "fa-network-wired", bio: "Network Engineer.", github: "#", linkedin: "#", telegram: "#" },
+            { name: "Dawit Tsegaye", id: "DMU/1005/16", email: "dawit.tsegaye@dmu.edu.et", icon: "fa-database", bio: "Data Analyst.", github: "#", linkedin: "#", telegram: "#" },
+            { name: "Selam Tariku", id: "DMU/1006/16", email: "selam.tariku@dmu.edu.et", icon: "fa-laptop-code", bio: "Software Engineer.", github: "#", linkedin: "#", telegram: "#" },
+            { name: "Bereket Simeneh", id: "DMU/1007/16", email: "bereket.simeneh@dmu.edu.et", icon: "fa-code", bio: "Python Developer.", github: "#", linkedin: "#", telegram: "#" },
+            { name: "Hanna Tesfaye", id: "DMU/1008/16", email: "hanna.tesfaye@dmu.edu.et", icon: "fa-microchip", bio: "AI Enthusiast.", github: "#", linkedin: "#", telegram: "#" },
+            { name: "Robel Solomon", id: "DMU/1009/16", email: "robel.solomon@dmu.edu.et", icon: "fa-network-wired", bio: "System Admin.", github: "#", linkedin: "#", telegram: "#" },
+            { name: "Liya Tariku", id: "DMU/1010/16", email: "liya.tariku@dmu.edu.et", icon: "fa-database", bio: "DB Admin.", github: "#", linkedin: "#", telegram: "#" },
+            { name: "Samuel Getachew", id: "DMU/1011/16", email: "samuel.getachew@dmu.edu.et", icon: "fa-laptop-code", bio: "Java Developer.", github: "#", linkedin: "#", telegram: "#" },
+            { name: "Eden Mengistu", id: "DMU/1012/16", email: "eden.mengistu@dmu.edu.et", icon: "fa-code", bio: "Front-end Dev.", github: "#", linkedin: "#", telegram: "#" },
+            { name: "Nathan Paulos", id: "DMU/1013/16", email: "nathan.paulos@dmu.edu.et", icon: "fa-microchip", bio: "Robotics.", github: "#", linkedin: "#", telegram: "#" },
+            { name: "Ruth Ayalew", id: "DMU/1014/16", email: "ruth.ayalew@dmu.edu.et", icon: "fa-network-wired", bio: "Cloud Computing.", github: "#", linkedin: "#", telegram: "#" },
+            { name: "Biruk Eshetu", id: "DMU/1015/16", email: "biruk.eshetu@dmu.edu.et", icon: "fa-database", bio: "Big Data.", github: "#", linkedin: "#", telegram: "#" },
+            { name: "Mahlet Tesfa", id: "DMU/1016/16", email: "mahlet.tesfa@dmu.edu.et", icon: "fa-laptop-code", bio: "App Developer.", github: "#", linkedin: "#", telegram: "#" },
+            { name: "Eyob Abebe", id: "DMU/1017/16", email: "eyob.abebe@dmu.edu.et", icon: "fa-code", bio: "C++ Expert.", github: "#", linkedin: "#", telegram: "#" }
         ];
 
         const studentGrid = document.getElementById('studentGrid');
+        const modal = document.getElementById('profileModal');
+        const modalBody = document.getElementById('modalBody');
 
-        // 2. Function to Generate Image URL if not provided
+        // 2. Generate Image URL
         function getImgUrl(student) {
             if (student.img) return student.img;
             return `https://ui-avatars.com/api/?name=${student.name.replace(/ /g, '+')}&background=0d3b66&color=fff&size=150`;
         }
 
-        // 3. Function to Render Cards
+        // 3. Render Cards
         function renderStudents() {
             let htmlContent = '';
-            students.forEach(student => {
+            students.forEach((student, index) => {
                 const avatarUrl = getImgUrl(student);
                 htmlContent += `
-                    <div class="student-card">
+                    <div class="student-card" onclick="openModal(${index})">
                         <div class="card-header"></div>
                         <img src="${avatarUrl}" alt="${student.name}" class="student-img" onerror="this.onerror=null;this.src='https://ui-avatars.com/api/?name=${student.name.replace(/ /g, '+')}&background=0d3b66&color=fff'">
                         <div class="student-body">
@@ -331,11 +425,77 @@
             studentGrid.innerHTML = htmlContent;
         }
 
-        // 4. Live Search Filter Function
+        // 4. Open Modal Function (Portfolio, QR, Contact)
+        function openModal(index) {
+            const student = students[index];
+            const avatarUrl = getImgUrl(student);
+            // Using a free QR Code API
+            const qrUrl = `https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${student.telegram !== '#' ? student.telegram : 'mailto:' + student.email}`;
+
+            // Sample Projects
+            const projects = [
+                { title: "E-commerce Platform", img: "https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?auto=format&fit=crop&w=400&q=80", link: "#" },
+                { title: "Student Management System", img: "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&w=400&q=80", link: "#" }
+            ];
+
+            let projectsHtml = '';
+            projects.forEach(p => {
+                projectsHtml += `
+                    <div class="project-card">
+                        <img src="${p.img}" alt="${p.title}">
+                        <div class="project-info">
+                            <h4>${p.title}</h4>
+                            <a href="${p.link}" target="_blank">View Project <i class="fas fa-arrow-right"></i></a>
+                        </div>
+                    </div>
+                `;
+            });
+
+            modalBody.innerHTML = `
+                <div class="modal-left">
+                    <img src="${avatarUrl}" alt="${student.name}" class="modal-img">
+                    <h2 class="modal-name">${student.name}</h2>
+                    <span class="modal-id">ID: ${student.id}</span>
+                    <div class="social-row">
+                        <a href="${student.github}" title="GitHub"><i class="fab fa-github"></i></a>
+                        <a href="${student.linkedin}" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="${student.telegram}" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                    </div>
+                    <div class="qr-box">
+                        <img src="${qrUrl}" alt="QR Code for ${student.name}">
+                        <p class="qr-text">Scan to Connect</p>
+                    </div>
+                    <a href="mailto:${student.email}?subject=Job%20Opportunity%20/%20Collaboration" class="hire-btn">
+                        <i class="fas fa-handshake"></i> Hire / Contact Student
+                    </a>
+                </div>
+                <div class="modal-right">
+                    <h3 class="modal-section-title">About / Bio</h3>
+                    <p class="modal-bio">${student.bio}</p>
+                    
+                    <h3 class="modal-section-title">Portfolio Showcase</h3>
+                    <div class="projects-grid">
+                        ${projectsHtml}
+                    </div>
+                </div>
+            `;
+            modal.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevent background scroll
+        }
+
+        function closeModal() {
+            modal.classList.remove('active');
+            document.body.style.overflow = 'auto';
+        }
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) closeModal();
+        });
+
+        // 5. Live Search
         function filterStudents() {
             let input = document.getElementById('searchInput').value.toLowerCase();
             let cards = document.getElementsByClassName('student-card');
-
             for (let i = 0; i < cards.length; i++) {
                 let cardText = cards[i].innerText.toLowerCase();
                 if (cardText.includes(input)) {
@@ -346,7 +506,29 @@
             }
         }
 
-        // Initialize the grid on page load
+        // 6. Dark/Light Mode Toggle Logic
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        // Check Local Storage for Theme
+        if (localStorage.getItem('theme') === 'dark') {
+            body.classList.add('dark-mode');
+            themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        }
+
+        themeToggle.addEventListener('click', () => {
+            body.classList.toggle('dark-mode');
+            
+            if (body.classList.contains('dark-mode')) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                localStorage.setItem('theme', 'dark');
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                localStorage.setItem('theme', 'light');
+            }
+        });
+
+        // Initialize
         renderStudents();
     </script>
 
