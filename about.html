@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us - Student Management System</title>
+    <!-- FontAwesome icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header Navigation */
+        header {
+            background-color: #0d3b66;
+            color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header .logo {
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        header nav a:hover {
+            color: #f4d35e;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: #0d3b66;
+            margin-bottom: 5px;
+            position: relative;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 25px;
+            font-style: italic;
+        }
+
+        .section-title::after {
+            content: '';
+            width: 80px;
+            height: 4px;
+            background-color: #f4d35e;
+            display: block;
+            margin: 8px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Language Divider Text inside elements */
+        .en-text {
+            display: block;
+            color: #666;
+            font-size: 0.9em;
+            margin-top: 4px;
+        }
+
+        /* System Info Section */
+        .system-info {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+            margin-bottom: 50px;
+        }
+
+        .system-info p {
+            font-size: 1.05rem;
+            color: #444;
+            margin-bottom: 20px;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .feature-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-left: 4px solid #0d3b66;
+            border-radius: 6px;
+        }
+
+        .feature-card i {
+            font-size: 1.8rem;
+            color: #0d3b66;
+            margin-bottom: 10px;
+        }
+
+        .feature-card h3 {
+            color: #0d3b66;
+        }
+
+        /* DMU Continuous Scrolling Section */
+        .dmu-section {
+            margin-top: 40px;
+        }
+
+        .scroller-container {
+            overflow: hidden;
+            width: 100%;
+            background: linear-gradient(135deg, #0d3b66, #1f5f8b);
+            padding: 40px 0;
+            border-radius: 15px;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .scroller-track {
+            display: flex;
+            width: calc(320px * 8); /* Width calculated for all total cards */
+            animation: scroll 30s linear infinite;
+        }
+
+        .scroller-track:hover {
+            animation-play-state: paused; /* Hover ሲደረግ ይቆማል / Pauses on hover */
+        }
+
+        .dmu-card {
+            width: 300px;
+            background: white;
+            margin: 0 10px;
+            padding: 22px;
+            border-radius: 10px;
+            flex-shrink: 0;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+
+        .dmu-card i {
+            font-size: 2.2rem;
+            color: #f4d35e;
+            background: #0d3b66;
+            padding: 14px;
+            border-radius: 50%;
+            margin-bottom: 12px;
+        }
+
+        .dmu-card h4 {
+            color: #0d3b66;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .dmu-card p {
+            font-size: 0.9rem;
+            color: #555;
+            line-height: 1.4;
+        }
+
+        /* Infinite Scroll Keyframes */
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(calc(-320px * 4)); }
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0d3b66;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="logo"><i class="fas fa-user-graduates"></i> Student System</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+            <a href="about.html" style="color: #f4d35e;">About Us</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <!-- System Description -->
+        <div class="system-info">
+            <h2 class="section-title">ስለ Student Management System</h2>
+            <div class="section-subtitle">About Student Management System</div>
+            
+            <p>
+                ይህ የፋኩልቲ/ዩኒቨርሲቲ ተማሪዎችን መረጃ ለማስተዳደር የተሰራ ዘመናዊ የዌብ ሲስተም ነው። ሲስተሙ የተማሪዎችን ምዝገባ፣ የትምህርት ውጤት አያያዝ እና አጠቃላይ የትምህርት ሂደቶችን በቀላሉ ለማስኬድ የታለመ ነው።
+                <span class="en-text">
+                    This is a modern web-based platform designed to manage faculty and university student records efficiently. The system streamlines student registration, grade management, and academic administrative workflows.
+                </span>
+            </p>
+
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-shield-alt"></i>
+                    <h3>ደህንነቱ የተጠበቀ</h3>
+                    <span class="en-text"><strong>Secure System:</strong> Protects student and staff data safely.</span>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-bolt"></i>
+                    <h3>ፈጣን አገልግሎት</h3>
+                    <span class="en-text"><strong>Fast Access:</strong> Delivers quick access to academic information anytime.</span>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-mobile-alt"></i>
+                    <h3>ምቹ ዲዛይን</h3>
+                    <span class="en-text"><strong>Responsive Design:</strong> Fully optimized for mobile, tablet, and desktop screens.</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- DMU Auto-Scrolling Section -->
+        <div class="dmu-section">
+            <h2 class="section-title">ስለ ደብረ ማርቆስ ዩኒቨርሲቲ (DMU)</h2>
+            <div class="section-subtitle">About Debre Markos University</div>
+            <p style="text-align: center; margin-bottom: 25px; color: #666; font-size: 0.9rem;">
+                (ካርዶቹ ላይ ማውስ በማስቀመጥ እንቅስቃሴያቸውን ማቆም ይችላሉ / Hover over cards to pause scrolling)
+            </p>
+
+            <div class="scroller-container">
+                <div class="scroller-track">
+                    
+                    <!-- Card 1 -->
+                    <div class="dmu-card">
+                        <i class="fas fa-university"></i>
+                        <h4>የተመሰረተበት ዓመት</h4>
+                        <p>ደብረ ማርቆስ ዩኒቨርሲቲ በ 1999 ዓ.ም. ከተመሰረቱ 2ኛ ጄኔሬሽን ዩኒቨርሲቲዎች አንዱ ነው።</p>
+                        <span class="en-text">Established in 2007 G.C. as one of the 2nd generation public universities in Ethiopia.</span>
+                    </div>
+
+                    <!-- Card 2 -->
+                    <div class="dmu-card">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h4>ራዕይ (Vision)</h4>
+                        <p>በምስራቅ አፍሪካ ከሚገኙ 10 ምርጥ ዩኒቨርሲቲዎች አንዱ መሆን።</p>
+                        <span class="en-text">To become one of the top 10 leading universities in East Africa.</span>
+                    </div>
+
+                    <!-- Card 3 -->
+                    <div class="dmu-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h4>አድራሻና ቦታ</h4>
+                        <p>በታሪካዊቷ የደብረ ማርቆስ ከተማ የሚገኝና ለትምህርት ተስማሚ አየር ጠባይ ያለው ነው።</p>
+                        <span class="en-text">Located in the historic town of Debre Markos, providing a conducive climate for learning.</span>
+                    </div>
+
+                    <!-- Card 4 -->
+                    <div class="dmu-card">
+                        <i class="fas fa-book-reader"></i>
+                        <h4>የትምህርት ክፍሎች</h4>
+                        <p>በቅድመ-ምረቃ እና ድህረ-ምረቃ ፕሮግራሞች በሺዎች የሚቆጠሩ ተማሪዎችን ያስተምራል።</p>
+                        <span class="en-text">Offers undergraduate and postgraduate programs for thousands of students.</span>
+                    </div>
+
+                    <!-- Duplicated Cards for Seamless Continuous Loop -->
+                    <div class="dmu-card">
+                        <i class="fas fa-university"></i>
+                        <h4>የተመሰረተበት ዓመት</h4>
+                        <p>ደብረ ማርቆስ ዩኒቨርሲቲ በ 1999 ዓ.ም. ከተመሰረቱ 2ኛ ጄኔሬሽን ዩኒቨርሲቲዎች አንዱ ነው።</p>
+                        <span class="en-text">Established in 2007 G.C. as one of the 2nd generation public universities in Ethiopia.</span>
+                    </div>
+
+                    <div class="dmu-card">
+                        <i class="fas fa-graduation-cap"></i>
+                        <h4>ራዕይ (Vision)</h4>
+                        <p>በምስራቅ አፍሪካ ከሚገኙ 10 ምርጥ ዩኒቨርሲቲዎች አንዱ መሆን።</p>
+                        <span class="en-text">To become one of the top 10 leading universities in East Africa.</span>
+                    </div>
+
+                    <div class="dmu-card">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <h4>አድራሻና ቦታ</h4>
+                        <p>በታሪካዊቷ የደብረ ማርቆስ ከተማ የሚገኝና ለትምህርት ተስማሚ አየር ጠባይ ያለው ነው።</p>
+                        <span class="en-text">Located in the historic town of Debre Markos, providing a conducive climate for learning.</span>
+                    </div>
+
+                    <div class="dmu-card">
+                        <i class="fas fa-book-reader"></i>
+                        <h4>የትምህርት ክፍሎች</h4>
+                        <p>በቅድመ-ምረቃ እና ድህረ-ምረቃ ፕሮግራሞች በሺዎች የሚቆጠሩ ተማሪዎችን ያስተምራል።</p>
+                        <span class="en-text">Offers undergraduate and postgraduate programs for thousands of students.</span>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Student Management System | Debre Markos University</p>
+    </footer>
+
+</body>
+</html>

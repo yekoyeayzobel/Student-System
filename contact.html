@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="am">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Student Management System</title>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: #f4f7f6;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header Navigation */
+        header {
+            background-color: #0d3b66;
+            color: white;
+            padding: 1rem 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        header .logo {
+            font-size: 1.4rem;
+            font-weight: bold;
+        }
+
+        header nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        header nav a:hover {
+            color: #f4d35e;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+
+        .page-title {
+            text-align: center;
+            font-size: 2.2rem;
+            color: #0d3b66;
+            margin-bottom: 5px;
+        }
+
+        .page-subtitle {
+            text-align: center;
+            font-size: 1.1rem;
+            color: #666;
+            margin-bottom: 40px;
+            font-style: italic;
+        }
+
+        .title-underline {
+            width: 80px;
+            height: 4px;
+            background-color: #f4d35e;
+            margin: 8px auto 0;
+            border-radius: 2px;
+        }
+
+        /* Contact Layout */
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 30px;
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Info Sidebar Section */
+        .contact-info {
+            background: linear-gradient(135deg, #0d3b66, #1f5f8b);
+            color: white;
+            padding: 40px 30px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .contact-info h3 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+            color: #f4d35e;
+        }
+
+        .contact-info p {
+            font-size: 0.95rem;
+            color: #e0e0e0;
+            margin-bottom: 30px;
+        }
+
+        .info-item {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 25px;
+        }
+
+        .info-item i {
+            font-size: 1.4rem;
+            color: #f4d35e;
+            margin-right: 15px;
+            margin-top: 5px;
+        }
+
+        .info-item h4 {
+            font-size: 1.05rem;
+            margin-bottom: 2px;
+        }
+
+        .info-item span {
+            font-size: 0.9rem;
+            color: #d1d5db;
+            display: block;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.15);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            text-decoration: none;
+            transition: background 0.3s, transform 0.2s;
+        }
+
+        .social-links a:hover {
+            background: #f4d35e;
+            color: #0d3b66;
+            transform: translateY(-3px);
+        }
+
+        /* Form Section */
+        .contact-form-container {
+            padding: 40px 35px;
+        }
+
+        .contact-form-container h3 {
+            font-size: 1.5rem;
+            color: #0d3b66;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 6px;
+            color: #444;
+            font-size: 0.95rem;
+        }
+
+        .form-group label span {
+            font-weight: normal;
+            color: #777;
+            font-size: 0.85rem;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1.5px solid #ddd;
+            border-radius: 8px;
+            font-size: 0.95rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: #0d3b66;
+            box-shadow: 0 0 0 3px rgba(13, 59, 102, 0.1);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .submit-btn {
+            background-color: #0d3b66;
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            font-size: 1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.3s, transform 0.2s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .submit-btn:hover {
+            background-color: #1f5f8b;
+            transform: translateY(-2px);
+        }
+
+        /* Success Message Box */
+        .alert-success {
+            display: none;
+            background-color: #d4edda;
+            color: #155724;
+            padding: 12px 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #c3e6cb;
+            font-size: 0.95rem;
+        }
+
+        /* Responsive Breakpoint */
+        @media (max-width: 850px) {
+            .contact-wrapper {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0d3b66;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header Navigation -->
+    <header>
+        <div class="logo"><i class="fas fa-user-graduates"></i> Student System</div>
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="login.html">Login</a>
+            <a href="register.html">Register</a>
+            <a href="about.html">About Us</a>
+            <a href="contact.html" style="color: #f4d35e;">Contact</a>
+        </nav>
+    </header>
+
+    <div class="container">
+        <h1 class="page-title">የመገናኛ ገጽ <span style="font-size: 1.5rem; color:#666;">/ Contact Us</span></h1>
+        <div class="page-subtitle">እኛን ለማግኘት ወይም አስተያየት ለመስጠት ከታች ያለውን ፎርም ይጠቀሙ</div>
+        <div class="title-underline"></div>
+
+        <div class="contact-wrapper">
+            
+            <!-- Left Info Sidebar -->
+            <div class="contact-info">
+                <div>
+                    <h3>አድራሻ እና መረጃ</h3>
+                    <p>Contact Information & Address</p>
+
+                    <div class="info-item">
+                        <i class="fas fa-university"></i>
+                        <div>
+                            <h4>ደብረ ማርቆስ ዩኒቨርሲቲ</h4>
+                            <span>Debre Markos University (DMU)</span>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <div>
+                            <h4>ቦታ / Location</h4>
+                            <span>ደብረ ማርቆስ፣ አማራ ክልል፣ ኢትዮጵያ</span>
+                            <span>Debre Markos, Amhara Region, Ethiopia</span>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="fas fa-envelope"></i>
+                        <div>
+                            <h4>ኢሜይል / Email</h4>
+                            <span>info@dmu.edu.et</span>
+                            <span>support@studentsystem.dmu.edu.et</span>
+                        </div>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <div>
+                            <h4>ስልክ / Phone</h4>
+                            <span>+251 58 771 1100</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Social Media -->
+                <div>
+                    <h4 style="margin-bottom: 10px; font-size: 0.95rem; color: #f4d35e;">ማህበራዊ ሚዲያ / Social Media</h4>
+                    <div class="social-links">
+                        <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
+                        <a href="#" title="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="#" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right Contact Form -->
+            <div class="contact-form-container">
+                <h3>መልእክት ይላኩ / Send a Message</h3>
+
+                <!-- Alert Message -->
+                <div class="alert-success" id="successAlert">
+                    <i class="fas fa-check-circle"></i> መልእክትዎ በተሳካ ሁኔታ ተልኳል! እናመሰግናለን።<br>
+                    <small>Your message has been sent successfully! Thank you.</small>
+                </div>
+
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="fullName">ሙሉ ስም <span>/ Full Name</span></label>
+                        <input type="text" id="fullName" class="form-control" placeholder="ለምሳሌ፡ አበበ ከበደ" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">ኢሜይል <span>/ Email Address</span></label>
+                        <input type="email" id="email" class="form-control" placeholder="example@gmail.com" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="subject">ርዕስ <span>/ Subject</span></label>
+                        <input type="text" id="subject" class="form-control" placeholder="የመልእክቱ ርዕስ..." required>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="message">መልእክት <span>/ Message</span></label>
+                        <textarea id="message" class="form-control" placeholder="መልእክትዎን እዚህ ይጻፉ..." required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-btn">
+                        <i class="fas fa-paper-plane"></i> መልእክት ላክ / Send Message
+                    </button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Frontend Interactive JavaScript -->
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault(); // Prevents actual page refresh (Demo mode)
+            
+            // Show Success Notification
+            const alertBox = document.getElementById('successAlert');
+            alertBox.style.display = 'block';
+
+            // Reset Form Fields
+            this.reset();
+
+            // Auto-hide alert after 5 seconds
+            setTimeout(function() {
+                alertBox.style.display = 'none';
+            }, 5000);
+        });
+    </script>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Student Management System | Debre Markos University</p>
+    </footer>
+
+</body>
+</html>
