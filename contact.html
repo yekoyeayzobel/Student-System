@@ -1,16 +1,11 @@
 <!DOCTYPE html>
-<html lang="am">
-     <head>
-  <meta charset="UTF-8">
-  <title>DMU IT Students Hub</title>
-  
-  <!-- Favicon / Tab Logo -->
-  <link rel="icon" type="image/png" href="image/logo.png">
-</head>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us - DMU IT Students Hub</title>
+    <!-- Favicon / Tab Logo -->
+    <link rel="icon" type="image/png" href="image/logo.png">
     <!-- Google Fonts & FontAwesome -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -37,7 +32,7 @@
             background-color: var(--light);
             color: #333;
             line-height: 1.6;
-            padding-top: 85px; /* Space for fixed header */
+            padding-top: 85px; 
         }
 
         /* --- Professional Header --- */
@@ -107,80 +102,33 @@
         .lang-menu.active { opacity: 1; visibility: visible; transform: translateY(0); }
         .lang-menu a {
             display: flex; align-items: center; gap: 10px; padding: 10px 15px;
-            text-decoration: none; color: var(--dark); font-size: 14px; transition: 0.2s;
+            text-decoration: none; color: var(--dark); font-size: 14px; transition: 0.2s; cursor: pointer;
         }
         .lang-menu a:hover { background: var(--light); }
 
         /* --- Container & Page Title --- */
-        .container {
-            max-width: 1200px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-
-        .page-title {
-            text-align: center;
-            font-size: 2.2rem;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-
-        .page-subtitle {
-            text-align: center;
-            font-size: 1.1rem;
-            color: #666;
-            margin-bottom: 40px;
-            font-style: italic;
-        }
-
-        .title-underline {
-            width: 80px;
-            height: 4px;
-            background-color: var(--accent);
-            margin: 8px auto 0;
-            border-radius: 2px;
-        }
+        .container { max-width: 1200px; margin: 40px auto; padding: 0 20px; }
+        .page-title { text-align: center; font-size: 2.2rem; color: var(--primary); margin-bottom: 5px; }
+        .page-subtitle { text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 40px; font-style: italic; }
+        .title-underline { width: 80px; height: 4px; background-color: var(--accent); margin: 8px auto 0; border-radius: 2px; }
 
         /* --- Contact Layout --- */
         .contact-wrapper {
-            display: grid;
-            grid-template-columns: 1fr 1.5fr;
-            gap: 0;
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
+            display: grid; grid-template-columns: 1fr 1.5fr; gap: 0;
+            background: white; border-radius: 15px; overflow: hidden;
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
         }
-
         .contact-info {
             background: linear-gradient(135deg, var(--primary), var(--secondary));
-            color: white;
-            padding: 40px 30px;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+            color: white; padding: 40px 30px;
+            display: flex; flex-direction: column; justify-content: space-between;
         }
-
-        .contact-info h3 {
-            font-size: 1.6rem;
-            margin-bottom: 10px;
-            color: var(--accent);
-        }
-
-        .contact-info p {
-            font-size: 0.95rem;
-            color: #e0e0e0;
-            margin-bottom: 30px;
-        }
-
+        .contact-info h3 { font-size: 1.6rem; margin-bottom: 10px; color: var(--accent); }
+        .contact-info p { font-size: 0.95rem; color: #e0e0e0; margin-bottom: 30px; }
         .info-item { display: flex; align-items: flex-start; margin-bottom: 25px; }
-        .info-item i {
-            font-size: 1.4rem; color: var(--accent);
-            margin-right: 15px; margin-top: 5px;
-        }
+        .info-item i { font-size: 1.4rem; color: var(--accent); margin-right: 15px; margin-top: 5px; }
         .info-item h4 { font-size: 1.05rem; margin-bottom: 2px; }
         .info-item span { font-size: 0.9rem; color: #d1d5db; display: block; }
-
         .social-links { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 20px; }
         .social-links a {
             width: 40px; height: 40px; background: rgba(255, 255, 255, 0.15);
@@ -191,40 +139,20 @@
 
         .contact-content-container { padding: 40px 35px; }
         .contact-content-container h3 {
-            font-size: 1.5rem; color: var(--primary);
-            margin-bottom: 20px; border-bottom: 2px solid var(--accent);
-            padding-bottom: 5px; display: inline-block;
+            font-size: 1.5rem; color: var(--primary); margin-bottom: 20px;
+            border-bottom: 2px solid var(--accent); padding-bottom: 5px; display: inline-block;
         }
-
-        .office-hours {
-            background: #f8f9fa; border-left: 4px solid var(--primary);
-            padding: 20px; border-radius: 8px; margin-bottom: 30px;
-        }
-        .office-hours h4 {
-            color: var(--primary); margin-bottom: 15px; font-size: 1.1rem;
-            display: flex; align-items: center; gap: 8px;
-        }
+        .office-hours { background: #f8f9fa; border-left: 4px solid var(--primary); padding: 20px; border-radius: 8px; margin-bottom: 30px; }
+        .office-hours h4 { color: var(--primary); margin-bottom: 15px; font-size: 1.1rem; display: flex; align-items: center; gap: 8px; }
         .office-hours ul { list-style: none; }
-        .office-hours ul li {
-            display: flex; justify-content: space-between; padding: 8px 0;
-            border-bottom: 1px dashed #ddd; color: #555; font-size: 0.95rem;
-        }
+        .office-hours ul li { display: flex; justify-content: space-between; padding: 8px 0; border-bottom: 1px dashed #ddd; color: #555; font-size: 0.95rem; }
         .office-hours ul li:last-child { border-bottom: none; }
         .office-hours ul li span { font-weight: 600; color: var(--primary); }
-
         .map-container { border-radius: 8px; overflow: hidden; box-shadow: 0 4px 10px rgba(0,0,0,0.1); }
 
         /* --- Professional Footer --- */
-        footer {
-            background: var(--dark);
-            color: #94a3b8;
-            padding: 60px 8% 20px;
-            margin-top: 60px;
-        }
-        .footer-container {
-            display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px;
-            margin-bottom: 40px; padding-bottom: 30px; border-bottom: 1px solid #1e293b;
-        }
+        footer { background: var(--dark); color: #94a3b8; padding: 60px 8% 20px; margin-top: 60px; }
+        .footer-container { display: grid; grid-template-columns: 2fr 1fr 1fr 1.5fr; gap: 40px; margin-bottom: 40px; padding-bottom: 30px; border-bottom: 1px solid #1e293b; }
         .footer-col h3 { color: #fff; margin-bottom: 20px; font-size: 1.5rem; display: flex; align-items: center; gap: 10px; }
         .footer-col h4 { color: #fff; margin-bottom: 20px; font-size: 1.1rem; }
         .footer-col p { font-size: 14px; line-height: 1.6; margin-bottom: 20px; }
@@ -234,10 +162,7 @@
         .footer-col ul li a:hover { color: var(--accent); }
         .footer-col ul li i { color: var(--primary); width: 16px; }
         .footer-socials { display: flex; gap: 12px; }
-        .footer-socials a {
-            width: 36px; height: 36px; background: #1e293b; border-radius: 8px;
-            display: flex; align-items: center; justify-content: center; color: #fff; transition: 0.3s;
-        }
+        .footer-socials a { width: 36px; height: 36px; background: #1e293b; border-radius: 8px; display: flex; align-items: center; justify-content: center; color: #fff; transition: 0.3s; }
         .footer-socials a:hover { background: var(--primary); transform: translateY(-3px); }
         .footer-bottom { text-align: center; font-size: 14px; color: #64748b; }
 
@@ -246,9 +171,7 @@
             .footer-container { grid-template-columns: 1fr 1fr; }
             .main-nav { display: none; } 
         }
-        @media (max-width: 850px) {
-            .contact-wrapper { grid-template-columns: 1fr; }
-        }
+        @media (max-width: 850px) { .contact-wrapper { grid-template-columns: 1fr; } }
         @media (max-width: 768px) {
             .header-container { padding: 10px 4%; }
             .dmu-logo { height: 35px; }
@@ -264,35 +187,29 @@
     <!-- Professional Header -->
     <header class="main-header">
         <div class="header-container">
-            
-            <!-- Left Section: DMU Logo & Department Info -->
             <div class="brand-section">
                 <div class="logo-wrapper">
                     <img src="image/logo.jpg" alt="DMU Logo" class="dmu-logo">
                 </div>
                 <div class="brand-info">
                     <h1 class="system-title"><i class="fa-solid fa-laptop-code"></i> DMU IT Students Hub</h1>
-                    <span class="univ-subtitle">Debre Markos University • Dept. of IT</span>
+                    <span class="univ-subtitle" data-i18n="header_subtitle">Debre Markos University • Dept. of IT</span>
                 </div>
             </div>
-
-            <!-- Center Navigation -->
             <nav class="main-nav">
-                <a href="index.html"><i class="fa-solid fa-house"></i> Home</a>
-                <a href="directory.html"><i class="fa-solid fa-users"></i> Directory</a>
-                <a href="about.html"><i class="fa-solid fa-circle-info"></i> About</a>
-                <a href="contact.html" class="active"><i class="fa-solid fa-envelope"></i> Contact</a>
+                <a href="index.html"><i class="fa-solid fa-house"></i> <span data-i18n="nav_home">Home</span></a>
+                <a href="directory.html"><i class="fa-solid fa-users"></i> <span data-i18n="nav_directory">Directory</span></a>
+                <a href="about.html"><i class="fa-solid fa-circle-info"></i> <span data-i18n="nav_about">About</span></a>
+                <a href="contact.html" class="active"><i class="fa-solid fa-envelope"></i> <span data-i18n="nav_contact">Contact</span></a>
             </nav>
-
-            <!-- Right Section: Language Selector -->
             <div class="nav-actions">
                 <div class="lang-dropdown">
                     <button class="lang-btn" id="langBtn">
-                        <i class="fa-solid fa-globe"></i> EN <i class="fa-solid fa-chevron-down"></i>
+                        <i class="fa-solid fa-globe"></i> <span id="currentLang">EN</span> <i class="fa-solid fa-chevron-down"></i>
                     </button>
                     <div class="lang-menu" id="langMenu">
-                        <a href="#">🇬🇧 English</a>
-                        <a href="#">🇪🇹 አማርኛ</a>
+                        <a onclick="changeLanguage('en', 'EN')">🇬🇧 English</a>
+                        <a onclick="changeLanguage('am', 'AM')">🇪🇹 አማርኛ</a>
                     </div>
                 </div>
             </div>
@@ -301,8 +218,8 @@
 
     <!-- Main Content -->
     <div class="container">
-        <h1 class="page-title">የመገናኛ ገጽ <span style="font-size: 1.5rem; color:#666;">/ Contact Us</span></h1>
-        <div class="page-subtitle">እኛን ለማግኘት ወይም አስተያየት ለመስጠት ከታች ያለውን መረጃ ይጠቀሙ</div>
+        <h1 class="page-title" data-i18n="page_title">Contact Us</h1>
+        <div class="page-subtitle" data-i18n="page_subtitle">Get in touch or send us feedback using the information below</div>
         <div class="title-underline"></div>
 
         <div class="contact-wrapper">
@@ -310,30 +227,29 @@
             <!-- Left Info Sidebar -->
             <div class="contact-info">
                 <div>
-                    <h3>አድራሻ እና መረጃ</h3>
-                    <p>Contact Information & Address</p>
+                    <h3 data-i18n="info_title">Contact Information & Address</h3>
+                    <p data-i18n="info_desc">Feel free to reach out to us through the following channels.</p>
 
                     <div class="info-item">
                         <i class="fas fa-university"></i>
                         <div>
-                            <h4>ደብረ ማርቆስ ዩኒቨርሲቲ</h4>
-                            <span>Debre Markos University (DMU)</span>
+                            <h4 data-i18n="info_univ">Debre Markos University (DMU)</h4>
+                            <span data-i18n="info_univ_sub">Main Campus, Block 4, IT Department</span>
                         </div>
                     </div>
 
                     <div class="info-item">
                         <i class="fas fa-map-marker-alt"></i>
                         <div>
-                            <h4>ቦታ / Location</h4>
-                            <span>ደብረ ማርቆስ፣ አማራ ክልል፣ ኢትዮጵያ</span>
-                            <span>Debre Markos, Amhara Region, Ethiopia</span>
+                            <h4 data-i18n="info_location_title">Location</h4>
+                            <span data-i18n="info_location_sub">Debre Markos, Amhara Region, Ethiopia</span>
                         </div>
                     </div>
 
                     <div class="info-item">
                         <i class="fas fa-envelope"></i>
                         <div>
-                            <h4>ኢሜይል / Email</h4>
+                            <h4 data-i18n="info_email_title">Email</h4>
                             <span>info@dmu.edu.et</span>
                             <span>support@studentsystem.dmu.edu.et</span>
                         </div>
@@ -342,15 +258,15 @@
                     <div class="info-item">
                         <i class="fas fa-phone"></i>
                         <div>
-                            <h4>ስልክ / Phone</h4>
+                            <h4 data-i18n="info_phone_title">Phone</h4>
                             <span>+251 58 771 1100</span>
                         </div>
                     </div>
                 </div>
 
-                <!-- Social Media (YouTube & TikTok Included) -->
+                <!-- Social Media -->
                 <div>
-                    <h4 style="margin-bottom: 10px; font-size: 0.95rem; color: #f4d35e;">ማህበራዊ ሚዲያ / Follow Us</h4>
+                    <h4 style="margin-bottom: 10px; font-size: 0.95rem; color: var(--accent);" data-i18n="info_social_title">Follow Us</h4>
                     <div class="social-links">
                         <a href="#" title="Facebook"><i class="fab fa-facebook-f"></i></a>
                         <a href="#" title="Telegram"><i class="fab fa-telegram-plane"></i></a>
@@ -360,33 +276,28 @@
                 </div>
             </div>
 
-            <!-- Right Content (Office Hours & Map) -->
+            <!-- Right Content -->
             <div class="contact-content-container">
-                <h3>የስራ ሰዓት / Office Hours</h3>
+                <h3 data-i18n="hours_title">Office Hours</h3>
                 
                 <div class="office-hours">
-                    <h4><i class="fas fa-clock"></i> የስራ ጊዜ መግለጫ</h4>
+                    <h4><i class="fas fa-clock"></i> <span data-i18n="hours_sub">Working Hours</span></h4>
                     <ul>
-                        <li>ሰኞ - አርብ <span>8:00 ጠዋት - 5:00 ማታ</span></li>
-                        <li>ቅዳሜ <span>8:00 ጠዋት - 12:00 ማታ</span></li>
-                        <li>እሁድ <span style="color: #dc3545;">ዕረፍት / Closed</span></li>
+                        <li><span data-i18n="hours_mon_fri">Monday - Friday</span> <span>8:00 AM - 5:00 PM</span></li>
+                        <li><span data-i18n="hours_sat">Saturday</span> <span>8:00 AM - 12:00 PM</span></li>
+                        <li><span data-i18n="hours_sun">Sunday</span> <span style="color: #dc3545;" data-i18n="hours_closed">Closed</span></li>
                     </ul>
                 </div>
 
-                <h3>ቦታውን ይመልከቱ / Find Us</h3>
+                <h3 data-i18n="map_title">Find Us</h3>
                 <div class="map-container">
                     <iframe 
                         src="https://www.google.com/maps?q=Debre+Markos+University&output=embed" 
-                        width="100%" 
-                        height="300" 
-                        style="border:0; display: block;" 
-                        allowfullscreen="" 
-                        loading="lazy" 
-                        referrerpolicy="no-referrer-when-downgrade">
+                        width="100%" height="300" style="border:0; display: block;" 
+                        allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
                     </iframe>
                 </div>
             </div>
-
         </div>
     </div>
 
@@ -395,7 +306,7 @@
         <div class="footer-container">
             <div class="footer-col">
                 <h3><i class="fa-solid fa-laptop-code"></i> DMU IT Hub</h3>
-                <p>Debre Markos University IT Students Platform. A dedicated space to showcase talents, connect with peers, and explore professional opportunities.</p>
+                <p data-i18n="footer_about">Debre Markos University IT Students Platform. A dedicated space to showcase talents, connect with peers, and explore professional opportunities.</p>
                 <div class="footer-socials">
                     <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
                     <a href="#"><i class="fa-brands fa-telegram"></i></a>
@@ -404,25 +315,25 @@
                 </div>
             </div>
             <div class="footer-col">
-                <h4>Quick Links</h4>
+                <h4 data-i18n="footer_quick">Quick Links</h4>
                 <ul>
-                    <li><i class="fa-solid fa-chevron-right"></i> <a href="index.html">Home</a></li>
-                    <li><i class="fa-solid fa-chevron-right"></i> <a href="directory.html">Directory</a></li>
-                    <li><i class="fa-solid fa-chevron-right"></i> <a href="about.html">About Us</a></li>
-                    <li><i class="fa-solid fa-chevron-right"></i> <a href="contact.html">Contact</a></li>
+                    <li><i class="fa-solid fa-chevron-right"></i> <a href="index.html" data-i18n="nav_home">Home</a></li>
+                    <li><i class="fa-solid fa-chevron-right"></i> <a href="directory.html" data-i18n="nav_directory">Directory</a></li>
+                    <li><i class="fa-solid fa-chevron-right"></i> <a href="about.html" data-i18n="nav_about">About Us</a></li>
+                    <li><i class="fa-solid fa-chevron-right"></i> <a href="contact.html" data-i18n="nav_contact">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>Resources</h4>
+                <h4 data-i18n="footer_resources">Resources</h4>
                 <ul>
-                    <li><i class="fa-solid fa-chevron-right"></i> <a href="#">IT Department</a></li>
-                    <li><i class="fa-solid fa-chevron-right"></i> <a href="#">University Portal</a></li>
-                    <li><i class="fa-solid fa-chevron-right"></i> <a href="#">Tech Blog</a></li>
-                    <li><i class="fa-solid fa-chevron-right"></i> <a href="#">Support</a></li>
+                    <li><i class="fa-solid fa-chevron-right"></i> <a href="#" data-i18n="footer_res1">IT Department</a></li>
+                    <li><i class="fa-solid fa-chevron-right"></i> <a href="#" data-i18n="footer_res2">University Portal</a></li>
+                    <li><i class="fa-solid fa-chevron-right"></i> <a href="#" data-i18n="footer_res3">Tech Blog</a></li>
+                    <li><i class="fa-solid fa-chevron-right"></i> <a href="#" data-i18n="footer_res4">Support</a></li>
                 </ul>
             </div>
             <div class="footer-col">
-                <h4>Contact Info</h4>
+                <h4 data-i18n="footer_contact_info">Contact Info</h4>
                 <ul>
                     <li><i class="fa-solid fa-location-dot"></i> Debre Markos University, Ethiopia</li>
                     <li><i class="fa-solid fa-envelope"></i> it.hub@dmu.edu.et</li>
@@ -435,8 +346,76 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Language Dropdown -->
+    <!-- Multilingual JavaScript -->
     <script>
+        // 1. Translation Dictionary
+        const translations = {
+            en: {
+                header_subtitle: "Debre Markos University • Dept. of IT",
+                nav_home: "Home", nav_directory: "Directory", nav_about: "About", nav_contact: "Contact",
+                page_title: "Contact Us",
+                page_subtitle: "Get in touch or send us feedback using the information below",
+                info_title: "Contact Information & Address",
+                info_desc: "Feel free to reach out to us through the following channels.",
+                info_univ: "Debre Markos University (DMU)",
+                info_univ_sub: "Main Campus, Block 4, IT Department",
+                info_location_title: "Location",
+                info_location_sub: "Debre Markos, Amhara Region, Ethiopia",
+                info_email_title: "Email", info_phone_title: "Phone",
+                info_social_title: "Follow Us",
+                hours_title: "Office Hours",
+                hours_sub: "Working Hours",
+                hours_mon_fri: "Monday - Friday", hours_sat: "Saturday", hours_sun: "Sunday", hours_closed: "Closed",
+                map_title: "Find Us",
+                footer_about: "Debre Markos University IT Students Platform. A dedicated space to showcase talents, connect with peers, and explore professional opportunities.",
+                footer_quick: "Quick Links", footer_resources: "Resources", footer_contact_info: "Contact Info",
+                footer_res1: "IT Department", footer_res2: "University Portal", footer_res3: "Tech Blog", footer_res4: "Support"
+            },
+            am: {
+                header_subtitle: "ደብረ ማርቆስ ዩኒቨርሲቲ • የአይቲ ክፍል",
+                nav_home: "መነሻ", nav_directory: "ዝርዝር", nav_about: "ስለ እኛ", nav_contact: "አግኙን",
+                page_title: "የመገናኛ ገጽ",
+                page_subtitle: "እኛን ለማግኘት ወይም አስተያየት ለመስጠት ከታች ያለውን መረጃ ይጠቀሙ",
+                info_title: "አድራሻ እና መረጃ",
+                info_desc: "በሚከተሉት መንገዶች በነፃ ከእኛ ጋር ይገናኙ።",
+                info_univ: "ደብረ ማርቆስ ዩኒቨርሲቲ (DMU)",
+                info_univ_sub: "ዋና ካምፓስ፣ ብሎክ 4፣ የአይቲ ክፍል",
+                info_location_title: "ቦታ",
+                info_location_sub: "ደብረ ማርቆስ፣ አማራ ክልል፣ ኢትዮጵያ",
+                info_email_title: "ኢሜይል", info_phone_title: "ስልክ",
+                info_social_title: "ይከታተሉን",
+                hours_title: "የስራ ሰዓት",
+                hours_sub: "የስራ ጊዜ መግለጫ",
+                hours_mon_fri: "ሰኞ - አርብ", hours_sat: "ቅዳሜ", hours_sun: "እሁድ", hours_closed: "ዕረፍት",
+                map_title: "ቦታውን ይመልከቱ",
+                footer_about: "የደብረ ማርቆስ ዩኒቨርሲቲ የአይቲ ተማሪዎች ፕላትፎርም። የሙያ ችሎታን ለማሳየት፣ ከአብረው ከሚማሩ ጋር ለመገናኘት እና የስራ እድሎችን ለመለማመድ የተወሰነ ቦታ።",
+                footer_quick: "ፈጣን አገናኞች", footer_resources: "ሀብቶች", footer_contact_info: "የመገናኛ መረጃ",
+                footer_res1: "የአይቲ ክፍል", footer_res2: "የዩኒቨርሲቲ ፖርታል", footer_res3: "የቴክ ብሎግ", footer_res4: "ድጋፍ"
+            }
+        };
+
+        // 2. Language Switching Function
+        function changeLanguage(lang, langName) {
+            const elements = document.querySelectorAll('[data-i18n]');
+            elements.forEach(el => {
+                const key = el.getAttribute('data-i18n');
+                if (translations[lang][key]) {
+                    el.innerText = translations[lang][key];
+                }
+            });
+
+            // Update current language button text
+            document.getElementById('currentLang').innerText = langName;
+            
+            // Save to Local Storage
+            localStorage.setItem('language', lang);
+            localStorage.setItem('langName', langName);
+
+            // Close dropdown
+            document.getElementById('langMenu').classList.remove('active');
+        }
+
+        // 3. Dropdown Toggle Logic
         document.getElementById('langBtn').addEventListener('click', (e) => {
             e.stopPropagation();
             document.getElementById('langMenu').classList.toggle('active');
@@ -445,6 +424,13 @@
             if (!e.target.closest('.lang-dropdown')) {
                 document.getElementById('langMenu').classList.remove('active');
             }
+        });
+
+        // 4. Load Saved Language on Page Load
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('language') || 'en';
+            const savedLangName = localStorage.getItem('langName') || 'EN';
+            changeLanguage(savedLang, savedLangName);
         });
     </script>
 
